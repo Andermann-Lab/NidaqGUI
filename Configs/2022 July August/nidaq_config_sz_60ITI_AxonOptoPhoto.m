@@ -7,7 +7,7 @@ nicfg.RecordRunning    = true;         % Use quad encoder or not
 nicfg.baumrate         = 19200;         % Baumrate 9600 for v1, 19200 for v3
 nicfg.NidaqDevice      = 'Dev2';        % Device name
 nicfg.useMLlibrary     = false;          % Use monkeylogic library
-nicfg.NidaqChannels    = 0;             % Set the number of NIDAQ channels to record (e.g. 6 means 0:5)
+nicfg.NidaqChannels    = 8;             % Set the number of NIDAQ channels to record (e.g. 6 means 0:5)
 nicfg.NidaqDigitalChannels = 0;         % Set the number of digital channels on Port0 to record, starting at Line0
 nicfg.NidaqFrequency   = 2500;          % Set the recording frequency for the nidaq
 nicfg.RunningFrequency = 30;         % Set the frequency at which running is recorded
@@ -49,16 +49,15 @@ nicfg.omnibox.enable = true;
 % Modes
 % Two-color photometry
 nicfg.tcp.enable = false; % Default true.
-nicfg.tcp.behaviorcycle = 60; % Train cycle in seconds. E.g., 30 means 30 seconds from start to start. Default 30.
-
+nicfg.tcp.behaviorcycle = 60;
 
 % Optophotometry (two colors)
 % Variable pulse width. Variable pulse cycle (only use for pure optomode)
 nicfg.optophotometry.enable = true; % Default false
-nicfg.optophotometry.freqmod = 1; % Frequency is actually 50/X. E.g., 5 means 10 Hz. Default 5 (10 Hz).
-nicfg.optophotometry.trainlength = 50; % Opto pulses per train. E.g., 10 means 10 pulses per train. Default 10.
-nicfg.optophotometry.cycle = 30; % Train cycle in seconds. E.g., 30 means 30 seconds from start to start. Default 30.
-nicfg.optophotometry.pulsewidth = 20; % Pulth width in ms. E.g., 10 means 10 ms pulses. Default 10. Going above 19 may cause issues.
+nicfg.optophotometry.freqmod = 2; % Frequency is actually 50/X. E.g., 5 means 10 Hz. Default 5 (10 Hz).
+nicfg.optophotometry.trainlength = 200; % Opto pulses per train. E.g., 10 means 10 pulses per train. Default 10.
+nicfg.optophotometry.cycle = 60; % Train cycle in seconds. E.g., 30 means 30 seconds from start to start. Default 30.
+nicfg.optophotometry.pulsewidth = 8; % Pulth width in ms. E.g., 10 means 10 ms pulses. Default 10. Going above 19 may cause issues.
 
 % Change pulse cycles (CAUTION)
 % Generally only change these values for pure optomode
@@ -82,7 +81,7 @@ nicfg.scoptophotometry.pulsewidth = 20; % Pulth width in ms. E.g., 10 means 10 m
 
 % Scheduler
 nicfg.scheduler.enable = true; % Default false
-nicfg.scheduler.delay = 30; % Delayed opto start in seconds. E.g., 120 means 2 min delay. Default 120s. Max 65535s.
+nicfg.scheduler.delay = 120; % Delayed opto start in seconds. E.g., 120 means 2 min delay. Default 120s. Max 2550s.
 nicfg.scheduler.ntrains = 20; % Number of trains. Default 10.
 nicfg.scheduler.manualoverride = false; % Allow for manual swichingoverride. Default true.
 nicfg.scheduler.listenmode = false; % Enable listenmode, which makes each tran triggered by external active low. This will enable manualoverride above.
@@ -108,14 +107,11 @@ nicfg.scheduler.randomITI_max = 40; % Highest value of ITI (exclusive, in second
 % TTL pulses that happen X seconds after each opto train onset (for food
 % delivery or synchronizing).
 % Delivery (unconditional): Opto start => delivery delay => delivery
-nicfg.optodelayTTL.enable = true; % Default false
-nicfg.optodelayTTL.delay = 0; % Delay in 100 ms. E.g., 20 means 2 seconds. Default 20 (2s). Max 65535 (6553.5s).
+nicfg.optodelayTTL.enable = false; % Default false
+nicfg.optodelayTTL.delay = 20; % Delay in 100 ms. E.g., 20 means 2 seconds. Default 20 (2s)
 nicfg.optodelayTTL.pulsewidth = 15; % Pulsewidth in X * 10 ms. E.g., 15 means 150 ms pulses. Default is 15 (150 ms).
 nicfg.optodelayTTL.cycle = 30; % Pulse cycle in X * 10 ms. E.g., 30 means 300 ms pulses. Default is 30 (300 ms).
 nicfg.optodelayTTL.trainlength = 5; % Pulse train length. E.g., 5 means 5 pulses. Default is 5.
-nicfg.optodelayTTL.optothenTTL = false; % Sets the sequence: opto->food or food->opto. Has to be true in listen mode. Default true (opto => food).
-nicfg.optodelayTTL.lead = 20; % How many seconds is the food TTL armed before an opto train. This does not affect the cue/actoin/reward delays above. Default 4s. Max 65535s.
-
 
 % Opto-delayed TTL buzzer
 % Cue: Opto start => buzzer delay => buzzer duration
