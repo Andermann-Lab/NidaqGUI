@@ -95,7 +95,7 @@ nicfg.scheduler.passchance = 50; % Pass chance in percentage (30 = 30% pass)
 
 % Control experiments (no stim)
 % Basically sets RNG mode and pass chance = 0
-nicfg.scheduler.control = true;
+nicfg.scheduler.control = false;
 
 % Randomized ITI
 % (Scheduler only and does not apply to the listening mode)

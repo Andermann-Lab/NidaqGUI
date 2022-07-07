@@ -56,7 +56,7 @@ nicfg.tcp.behaviorcycle = 60;
 nicfg.optophotometry.enable = true; % Default false
 nicfg.optophotometry.freqmod = 1; % Frequency is actually 50/X. E.g., 5 means 10 Hz. Default 5 (10 Hz).
 nicfg.optophotometry.trainlength = 50; % Opto pulses per train. E.g., 10 means 10 pulses per train. Default 10.
-nicfg.optophotometry.cycle = 10; % Train cycle in seconds. E.g., 30 means 30 seconds from start to start. Default 30.
+nicfg.optophotometry.cycle = 60; % Train cycle in seconds. E.g., 30 means 30 seconds from start to start. Default 30.
 nicfg.optophotometry.pulsewidth = 20; % Pulth width in ms. E.g., 10 means 10 ms pulses. Default 10. Going above 19 may cause issues.
 
 % Change pulse cycles (CAUTION)
@@ -108,7 +108,7 @@ nicfg.scheduler.randomITI_max = 40; % Highest value of ITI (exclusive, in second
 % delivery or synchronizing).
 % Delivery (unconditional): Opto start => delivery delay => delivery
 nicfg.optodelayTTL.enable = false; % Default false
-nicfg.optodelayTTL.delay = 20; % Delay in 100 ms. E.g., 20 means 2 seconds. Default 20 (2s)
+nicfg.optodelayTTL.delay = 120; % Delay in 100 ms. E.g., 20 means 2 seconds. Default 20 (2s)
 nicfg.optodelayTTL.pulsewidth = 15; % Pulsewidth in X * 10 ms. E.g., 15 means 150 ms pulses. Default is 15 (150 ms).
 nicfg.optodelayTTL.cycle = 30; % Pulse cycle in X * 10 ms. E.g., 30 means 300 ms pulses. Default is 30 (300 ms).
 nicfg.optodelayTTL.trainlength = 5; % Pulse train length. E.g., 5 means 5 pulses. Default is 5.
