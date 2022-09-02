@@ -250,4 +250,3 @@ if nicfg.onlineecho.enable
 end
 
 end
-
